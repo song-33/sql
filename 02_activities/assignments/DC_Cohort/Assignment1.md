@@ -14,14 +14,14 @@
     * Open a private window in your browser. Copy and paste the link to your pull request into the address bar. Make sure you can see your pull request properly. This helps the technical facilitator and learning support staff review your submission easily.
 
 Checklist:
-- [ ] Create a branch called `assignment-one`.
-- [ ] Ensure that the repository is public.
-- [ ] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
-- [ ] Verify that the link is accessible in a private browser window.
+- [x] Create a branch called `assignment-one`.
+- [x] Ensure that the repository is public.
+- [x] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
+- [x] Verify that the link is accessible in a private browser window.
 
 If you encounter any difficulties or have questions, please don't hesitate to reach out to our team via our Slack. Our Technical Facilitators and Learning Support staff are here to help you navigate any challenges.
 
-*** 
+***
 
 ## Section 1:
 You can start this section following *session 1*.
@@ -106,6 +106,8 @@ Please do not pick the exact same tables that I have already diagrammed. For exa
 	- <img src="./images/01_farmers_market_conceptual_model.png" width="600">
 - The column names can be found in a few spots (DB Schema window in the bottom right, the Database Structure tab in the main window by expanding each table entry, at the top of the Browse Data tab in the main window)
 
+![Assignment1-Section1.png](C:\Users\songy\Documents\Others\DSI\sql\02_activities\assignments\DC_Cohort\images\Assignment1-Section1.png "Farmers Market Logical Model")
+
 ***
 
 ## Section 2:
@@ -160,6 +162,7 @@ Steps to complete this part of the assignment:
 1. Write a query that determines how many times each vendor has rented a booth at the farmer’s market by counting the vendor booth assignments per `vendor_id`.
 2. The Farmer’s Market Customer Appreciation Committee wants to give a bumper sticker to everyone who has ever spent more than $2000 at the market. Write a query that generates a list of customers for them to give stickers to, sorted by last name, then first name.
    
+
 **HINT**: This query requires you to join two tables, use an aggregate function, and use the HAVING keyword.
 
 <div align="center">-</div>
@@ -167,6 +170,7 @@ Steps to complete this part of the assignment:
 #### Temp Table
 1. Insert the original vendor table into a temp.new_vendor and then add a 10th vendor: Thomass Superfood Store, a Fresh Focused store, owned by Thomas Rosenthal
    
+
 **HINT**: This is two total queries -- first create the table from the original, then insert the new 10th vendor. When inserting the new vendor, you need to appropriately align the columns to be inserted (there are five columns to be inserted, I've given you the details, but not the syntax)
 
 To insert the new row use VALUES, specifying the value you want for each column:  
@@ -177,13 +181,15 @@ To insert the new row use VALUES, specifying the value you want for each column:
 #### Date
 1. Get the customer_id, month, and year (in separate columns) of every purchase in the customer_purchases table.
    
+
 **HINT**: you might need to search for strfrtime modifers sqlite on the web to know what the modifers for month and year are!
 
 2. Using the previous query as a base, determine how much money each customer spent in April 2022. Remember that money spent is `quantity*cost_to_customer_per_qty`.
    
+
 **HINTS**: you will need to AGGREGATE, GROUP BY, and filter...but remember, STRFTIME returns a STRING for your WHERE statement!!
 
-*** 
+***
 
 ## Section 4:
 You can start this section anytime.
@@ -207,3 +213,13 @@ Consider, for example, concepts of fariness, inequality, social structures, marg
 ```
 Your thoughts...
 ```
+
+The Immigration, Refugees and Citizenship Canada (IRCC) system, like the NADRA system discussed in the article, is built on technical choices that are not neutral. They are direct reflections of the Canadian government's priorities for immigration and national security and process control, over responsiveness and user urgency.
+
+There is a "security screening" tracker run by an external, uncontrollable third party. IRCC prioritizes comprehensive security checks above all other concerns, including the applicant's life timeline, travel needs, or right to a timely process. Its willingness to relinquish control over processing time to an external body embeds the value that security must be first-priority, even if it results in significant delays.
+
+The system's rigidity is a direct technical expression of its underlying value of maintaining a single data record for every individual. The system uses a unique combination of name, birth date, and other personal info to automatically consolidate duplicate applications, ensuring that only one definitive decision is associated with one individual. While the rule ensures that multiple applications are not permitted, it deprives the applicant's ability to intervene, speed up, or restart a stalled process in case of any urgency. The rule binds the individual's application to a single, rigid, unchangeable timeline.
+
+Furthermore, the application process is structured to hide certain critical information from the applicant, indicated by the existence of hidden trackers that show the application stage, which one cannot normally see and must be requested. This way, IRCC controls the information flow and prevents applicants from directly pressuring specific departments or the third-party screening agency. However, this hidden information also reduces the applicant's ability to act rationally. You are left with uncertainty and doubt when you know there is a significant delay, but without knowing the precise blockage.
+
+Overall, the entire system embeds an undeniable value that the applicant's time and individual circumstances are secondary to the institutional process. The system treats the application as a single, immutable object, regardless of any personal emergency or the resulting 2-year delay for my family. The system architecture does not "acknowledge there will be change", and this rigidity causes suffering but is somehow justified by the higher values of security and process control.
