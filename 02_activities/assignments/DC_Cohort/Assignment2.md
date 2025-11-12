@@ -14,10 +14,10 @@
     * Open a private window in your browser. Copy and paste the link to your pull request into the address bar. Make sure you can see your pull request properly. This helps the technical facilitator and learning support staff review your submission easily.
 
 Checklist:
-- [ ] Create a branch called `assignment-two`.
-- [ ] Ensure that the repository is public.
-- [ ] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
-- [ ] Verify that the link is accessible in a private browser window.
+- [x] Create a branch called `assignment-two`.
+- [x] Ensure that the repository is public.
+- [x] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
+- [x] Verify that the link is accessible in a private browser window.
 
 If you encounter any difficulties or have questions, please don't hesitate to reach out to our team via our Slack. Our Technical Facilitators and Learning Support staff are here to help you navigate any challenges.
 
@@ -55,6 +55,22 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 
 ```
 Your answer...
+The first architecture overwrites previous old data and only stores the most recent address for a customer, which is a type 1 architecture. The CUSTOMER_ADDRESS table will contain the following attributes:
+* customer_id (PK)
+* customer_first_name
+* customer_last_name
+* customer_address
+* customer_postal_code
+When a customer changes their address, both customer_address and customer_postal_code will have a new value in the database.
+
+The second architecture retains changes and creates a new record to track every address change, which is a type 2 architecture. The CUSTOMER_ADDRESS table will contain the following attributes:
+* address_id (PK)
+* customer_id (FK)
+* customer_address
+* customer_postal_code
+* address_start_date
+* current_address_flag
+When a customer changes their address, a new row will be added with the updated address info, and the current_address_flag is set to TRUE. The previous address row's current_address_flag will be changed to FALSE, so that we can use current_address_flag=TRUE to track any customer's current address.
 ```
 
 ***
@@ -163,7 +179,8 @@ ADD current_quantity INT;
 Then, using `UPDATE`, change the current_quantity equal to the **last** `quantity` value from the vendor_inventory details. 
 
 **HINT**: This one is pretty hard. First, determine how to get the "last" quantity per product. Second, coalesce null values to 0 (if you don't have null values, figure out how to rearrange your query so you do.) Third, `SET current_quantity = (...your select statement...)`, remembering that WHERE can only accommodate one column. Finally, make sure you have a WHERE statement to update the right row, you'll need to use `product_units.product_id` to refer to the correct row within the product_units table. When you have all of these components, you can run the update statement.
-*** 
+
+***
 
 ## Section 4:
 You can start this section anytime.
@@ -185,3 +202,19 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 ```
 Your thoughts...
 ```
+
+The story demonstrates how AIs, or other high-tech achievements, are built upon a largely invisible, and sometimes often exploited foundation of human labor. This foundation is often riddled with inherent human biases and subjective choices, which creates a black box for accountability. This issue further complicates in the era of LLMs like ChatGPT and Gemini.
+
+***Uncredited and unrecognized labor***
+
+The author traces the lineage of ImageNet back to the tens of thousands of invisible Turkers to label images, and even further back to the uncredited work of graduate students in the 1960s. Similarly, just as ImageNet needed humans to label hot dogs vs not hot dogs, LLMs require massive datasets to be cleaned, sorted, and curated manually. To prevent models from generating toxic, hateful, or dangerous content, human contractors are paid to filter it. This is the digital equivalent of maintaining a sewer, which is completely hidden from the end users.
+
+***Subjective biases***
+
+The article states that training set data are embedded with politics or human biases, where human judgments become objective ground truth for a dataset. LLMs are trained on a snapshot of the internet, which is also inherently skewed with prejudices, and human errors, thereby introducing significant subjective biases. As a result, an AI's seemingly neutral personality is, in fact, a carefully constructed view, embedding the cultural and corporate values of the company that built it. 
+
+***Accountability black box***
+
+When a system is built on layers of invisible labor and hidden subjective choices, accountability issues arise. This is also one of the greatest challenges for LLMs. When a model hallucinates and provides incorrect information, it is very hard to distinguish the guilty party. Is it the engineer who designed the algorithm, the human contractors, the company, or the users themselves? 
+
+In summary, the automated intelligence in systems like LLMs is built on a foundation of invisible human labor, which embeds subjective biases directly into their core and creates a critical accountability black box when these systems cause harm.
